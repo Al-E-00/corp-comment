@@ -11,23 +11,26 @@ export default function FeedbackList() {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch(
-      "https://bytegrad.cm/course-assets/projects/corpcomment/api/feedbacks"
-    )
-      .then((response) => {
+    const fetchFeedbackItems = async () => {
+      try {
+        const response = await fetch(
+          "https://bytegrad.com/course-assets/projects/corpcomment/api/feedbacks"
+        );
+
         if (!response.ok) {
           throw new Error();
         }
-        return response.json();
-      })
-      .then((data) => {
+
+        const data = await response.json();
         setFeedbackItems(data.feedbacks);
-        setIsLoading(false);
-      })
-      .catch(() => {
+      } catch (error) {
         setErrorMessage("Something went wrong. Please try again.");
+      } finally {
         setIsLoading(false);
-      });
+      }
+    };
+
+    fetchFeedbackItems();
   }, []);
 
   return (
