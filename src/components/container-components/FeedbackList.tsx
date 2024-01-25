@@ -1,25 +1,17 @@
+import { useEffect, useState } from "react";
 import FeedbackItem from "./feedback-components/FeedbackItem";
 
-const feedbackItems = [
-  {
-    id: 1,
-    numberOfUpvotes: 345,
-    badgeLetter: "F",
-    companyName: "Facebook",
-    feedback: "so so ",
-    daysAgo: 4,
-  },
-  {
-    id: 2,
-    numberOfUpvotes: 345,
-    badgeLetter: "F",
-    companyName: "Facebook",
-    feedback: "so so ",
-    daysAgo: 4,
-  },
-];
-
 export default function FeedbackList() {
+  const [feedbackItems, setFeedbackItems] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      "https://bytegrad.com/course-assets/projects/corpcomment/api/feedbacks"
+    )
+      .then((response) => response.json())
+      .then((data) => setFeedbackItems(data.feedbacks));
+  }, []);
+
   return (
     <ol className="feedback-list">
       {feedbackItems.map((feedbackItem) => (
