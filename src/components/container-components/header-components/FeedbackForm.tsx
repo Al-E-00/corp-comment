@@ -4,7 +4,7 @@ import { MAX_CHARACTERS } from "../../../lib/constants";
 export default function FeedbackForm() {
   const [textInput, setTextInput] = useState("");
 
-  const textInputChangeHandler = (
+  const textInputHandlerChange = (
     event: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     const newText = event.target.value;
@@ -23,7 +23,7 @@ export default function FeedbackForm() {
         placeholder="dummy-placeholder"
         spellCheck={false}
         value={textInput}
-        onChange={textInputChangeHandler}
+        onChange={textInputHandlerChange}
       />
       <label htmlFor="feedback-textarea">
         Enter your feedback here, remember to #hashtag the company
