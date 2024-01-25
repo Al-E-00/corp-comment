@@ -1,19 +1,18 @@
 import { useState } from "react";
+import { MAX_CHARACTERS } from "../../../lib/constants";
 
 export default function FeedbackForm() {
   const [textInput, setTextInput] = useState("");
-  const [characterCount, setCharacterCount] = useState(0);
 
   const textInputChangeHandler = (
     event: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     setTextInput(event.target.value);
-    setCharacterCount(textInput.length);
   };
 
-  let remainingCharacters = 150 - characterCount;
-  if (remainingCharacters < 0) {
-    remainingCharacters = 0;
+  let charCount = MAX_CHARACTERS - textInput.length;
+  if (charCount < 0) {
+    charCount = 0;
   }
 
   return (
@@ -29,7 +28,7 @@ export default function FeedbackForm() {
         Enter your feedback here, remember to #hashtag the company
       </label>
       <div>
-        <p className="u-italic">{remainingCharacters}</p>
+        <p className="u-italic">{charCount}</p>
         <button>Submit</button>
       </div>
     </form>
