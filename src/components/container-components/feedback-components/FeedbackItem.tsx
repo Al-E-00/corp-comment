@@ -17,7 +17,7 @@ export default function FeedbackItem({
   feedbackItem: { id, upvoteCount, badgeLetter, company, text, daysAgo },
 }: FeedbackItemProps): JSX.Element {
   return (
-    <li key={id} className="feedback">
+    <li className="feedback">
       <button>
         <TriangleUpIcon />
         <span>{upvoteCount}</span>
