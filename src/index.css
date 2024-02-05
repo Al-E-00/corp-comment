@@ -191,6 +191,12 @@ h1 *::selection {
   box-shadow: 0 0 0 2px #2c8a5e;
 }
 
+.form--error-message {
+  margin-top: 10px;
+  height: "20px";
+  color: #b57162;
+}
+
 textarea {
   width: 100%;
   height: 85px;
