@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState, createContext } from "react";
+import { useMemo, useState, createContext } from "react";
 import { TFeedbackItem } from "../../lib/types";
+import { useFeedbackItems } from "../../lib/hooks";
 
 type TFeedbackItemsContextProviderProps = {
   children: React.ReactNode;
@@ -22,10 +23,8 @@ export const FeedbackItemContext = createContext<TFeedbackItemsContext | null>(
 export default function FeedbackItemsContextProvider({
   children,
 }: TFeedbackItemsContextProviderProps) {
-  const [feedbackItems, setFeedbackItems] = useState<TFeedbackItem[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
   const [selectedCompany, setSelectedCompany] = useState("");
+  const { feedbackItems, isLoading, errorMessage } = useFeedbackItems();
 
   const companyList = useMemo(
     () =>
@@ -78,31 +77,6 @@ export default function FeedbackItemsContextProvider({
       }
     );
   };
-
-  useEffect(() => {
-    setIsLoading(true);
-
-    const fetchFeedbackItems = async () => {
-      try {
-        const response = await fetch(
-          "https://bytegrad.com/course-assets/projects/corpcomment/api/feedbacks"
-        );
-
-        if (!response.ok) {
-          throw new Error();
-        }
-
-        const data = await response.json();
-        setFeedbackItems(data.feedbacks);
-      } catch (error) {
-        setErrorMessage("Something went wrong. Please try again.");
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchFeedbackItems();
-  }, []);
 
   return (
     <FeedbackItemContext.Provider
