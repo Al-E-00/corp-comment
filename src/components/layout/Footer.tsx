@@ -4,8 +4,8 @@ export default function Footer() {
       <small>
         <p>
           &copy; Copyright by{" "}
-          <a target="_blank" href="#noref">
-            Alessio.com
+          <a target="_blank" href="https://alessio-m.vercel.app/">
+            Alessio
           </a>
           . Intended for learning
         </p>
