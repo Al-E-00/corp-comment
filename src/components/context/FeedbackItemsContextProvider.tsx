@@ -24,7 +24,8 @@ export default function FeedbackItemsContextProvider({
   children,
 }: TFeedbackItemsContextProviderProps) {
   const [selectedCompany, setSelectedCompany] = useState("");
-  const { feedbackItems, isLoading, errorMessage } = useFeedbackItems();
+  const { feedbackItems, isLoading, errorMessage, setFeedbackItems } =
+    useFeedbackItems();
 
   const companyList = useMemo(
     () =>

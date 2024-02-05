@@ -43,5 +43,5 @@ export function useFeedbackItems() {
     fetchFeedbackItems();
   }, []);
 
-  return { feedbackItems, isLoading, errorMessage };
+  return { feedbackItems, isLoading, errorMessage, setFeedbackItems };
 }
