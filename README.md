@@ -9,7 +9,7 @@ This project is a Feedback Management System built using React and TypeScript. I
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
-- [License](#license)
+- [Open Source](#open-source)
 
 ## Project Overview
 
