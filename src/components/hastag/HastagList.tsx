@@ -2,11 +2,13 @@ import HastagItem from "./HastagItem";
 
 type HastagListProps = {
   companyList: string[];
+  selectedCompany: string;
   handleSelectCompany: (company: string) => void;
 };
 
 export default function HastagList({
   companyList,
+  selectedCompany,
   handleSelectCompany,
 }: HastagListProps) {
   return (
@@ -18,6 +20,13 @@ export default function HastagList({
           onSelectCompany={handleSelectCompany}
         />
       ))}
+      {selectedCompany && (
+        <li>
+          <button className="reset" onClick={() => handleSelectCompany("")}>
+            Reset Filter
+          </button>
+        </li>
+      )}
     </ul>
   );
 }

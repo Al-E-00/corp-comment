@@ -531,6 +531,10 @@ form button span::selection {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+.hashtags li button.reset {
+  background-color: #3e404561;
+}
+
 /* FOOTER */
 .footer {
   position: absolute;
